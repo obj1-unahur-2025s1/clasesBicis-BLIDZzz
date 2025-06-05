@@ -22,15 +22,29 @@ class Deposito {
     method bicisDeLargo(unLargo) = bicis.filter({x=>x.largo() > unLargo})
     method cantBicisSinAccesorios() = bicis.count({x=>x.accesorios().isEmpty()})
     
-    method bicisCompañeras(unaBici) = self.bicisSinLaBici(self.bicisPesoSimilar(unaBici, self.bicisDeMarca(unaBici.marca())), unaBici)
+
+
+
+
+
+
+    method bicisCompañeras(unaBici) = self.bicisLargoSimilar(unaBici, self.bicisDeMarca(unaBici.marca()))
 
     method bicisSinLaBici(listaBicis, unaBici) = listaBicis.filter({x=> not (x.patente() == unaBici.patente())})
 
     method bicisDeMarca(unaMarca) = bicis.filter({x=>x.marca() == unaMarca})
 
-    method bicisPesoSimilar(unaBici, listaBicis) = listaBicis.filter({x=>x.peso().between(unaBici.peso() - 10, unaBici.peso() + 10)})
+    method bicisLargoSimilar(unaBici, listaBicis) = listaBicis.filter({x=>x.largo().between(unaBici.largo() - 10, unaBici.largo() + 10) and x != unaBici})
 
     method hayCompañeras() = bicis.map({x=> self.bicisCompañeras(x)}).any({x=>not x.isEmpty()})
+
+
+
+
+
+
+
+
 
     method todasLasCompañeras() = bicis.map({x=>self.posiblesParejas(x)}).asSet().asList()
 

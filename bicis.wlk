@@ -21,7 +21,16 @@ class Bici {
         if(not (patente.length() == 6)){
             self.error(patente.toString() + " no es una patente válida")
         }
+        if(registroPatentes.patentes().contains(patente)){
+            self.error(patente.toString() + " no es una patente válida")
+        }
+        registroPatentes.agregarPatente(patente)
     }
+}
+
+object registroPatentes {
+    const property patentes = []
+    method agregarPatente(unaPatente) {patentes.add(unaPatente)}
 }
 
 class Farolito {

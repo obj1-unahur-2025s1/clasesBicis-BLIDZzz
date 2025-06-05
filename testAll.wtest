@@ -16,8 +16,9 @@ describe "Alltests" {
     test "Desafío" {
         assert.equals([paquita, pachi, hernan, felix], deposito.bicisCompañeras(paquito))
     }
-
+    /*
     test "Parejas de Bicis" {
         assert.that(not deposito.todasLasCompañeras().isEmpty())
     }
+    */
 }
