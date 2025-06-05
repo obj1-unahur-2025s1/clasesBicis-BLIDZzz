@@ -1,0 +1,23 @@
+import bicis.*
+import depositos.*
+
+describe "Alltests" {
+    const paquito = new Bici(rodado = 1, largo = 200, marca = "nice", patente = "000000")
+    const paquita = new Bici(rodado = 2, largo = 200, marca = "nice", patente = "000001")
+    const pachi = new Bici(rodado = 2, largo = 200, marca = "nice", patente = "000002")
+    const hernan = new Bici(rodado = 2, largo = 200, marca = "nice", patente = "000003")
+    const felix = new Bici(rodado = 2, largo = 200, marca = "nice", patente = "000004")
+    const deposito = new Deposito(bicis = [paquito, paquita, pachi, hernan, felix])
+
+    test "Funciona el deposito" {
+        assert.equals(5, deposito.cantBicisSinAccesorios())
+    }
+
+    test "Desafío" {
+        assert.equals([paquita, pachi, hernan, felix], deposito.bicisCompañeras(paquito))
+    }
+
+    test "Parejas de Bicis" {
+        assert.that(not deposito.todasLasCompañeras().isEmpty())
+    }
+}
